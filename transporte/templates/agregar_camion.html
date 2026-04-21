@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 style="margin-bottom: 20px;">
+    {% if editar %}✏️ Editar Camión{% else %}🚛 Agregar Camión{% endif %}
+</h2>
+
+<form method="POST" style="max-width: 400px;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <br>
+    <button class="btn" type="submit">Guardar</button>
+    <a href="/" class="btn btn-gris" style="margin-left: 10px;">← Volver</a>
+</form>
+
+{% endblock %}

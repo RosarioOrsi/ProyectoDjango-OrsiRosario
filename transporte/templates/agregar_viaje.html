@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 style="margin-bottom: 20px;">🗺️ Agregar Viaje</h2>
+
+<form method="POST" style="max-width: 400px;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <br>
+    <button class="btn" type="submit">Guardar</button>
+    <a href="/" class="btn" style="margin-left: 10px;">← Volver</a>
+</form>
+
+{% endblock %}

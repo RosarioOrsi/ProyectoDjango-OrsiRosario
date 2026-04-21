@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 style="margin-bottom: 20px;">🚛 {{ camion.patente }}</h1>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+
+    <div style="background: #1e1e1e; border: 1px solid #333; padding: 20px; border-radius: 6px;">
+        <h2 style="border-bottom: 2px solid #c0392b; padding-bottom: 10px; margin-bottom: 15px;">Datos del Camión</h2>
+        <p>Patente: {{ camion.patente }}</p>
+        <p>Modelo: {{ camion.modelo }}</p>
+        <p>Tipo: {{ camion.tipo_unidad }}</p>
+    </div>
+
+    <div style="background: #1e1e1e; border: 1px solid #333; padding: 20px; border-radius: 6px;">
+        <h2 style="border-bottom: 2px solid #c0392b; padding-bottom: 10px; margin-bottom: 15px;">Viajes</h2>
+        <p>✅ Completados: {{ completados }}</p>
+        <p>⏳ Pendientes: {{ pendientes }}</p>
+    </div>
+
+    {% if camion.chofer %}
+    <div style="background: #1e1e1e; border: 1px solid #333; padding: 20px; border-radius: 6px; grid-column: span 2;">
+        <h2 style="border-bottom: 2px solid #c0392b; padding-bottom: 10px; margin-bottom: 15px;">Datos del Chofer</h2>
+        <p>Nombre: {{ camion.chofer.nombre }} {{ camion.chofer.apellido }}</p>
+        <p>CUIT: {{ camion.chofer.cuit }}</p>
+        <p>Legajo: {{ camion.chofer.legajo }}</p>
+        <p>Celular: {{ camion.chofer.celular }}</p>
+        <p>Mail: {{ camion.chofer.mail }}</p>
+    </div>
+    {% endif %}
+
+</div>
+
+<div style="margin-top: 20px; display: flex; gap: 10px;">
+    <a href="/editar-camion/{{ camion.pk }}/" class="btn">Editar</a>
+    <a href="/tipo/{{ camion.tipo_unidad }}/" class="btn btn-gris">← Volver</a>
+</div>
+
+{% endblock %}

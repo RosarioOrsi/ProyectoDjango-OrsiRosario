@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 style="margin-bottom: 10px;">🚛 {{ tipo }}</h1>
+
+<div style="display: flex; gap: 10px; margin-bottom: 20px; align-items: center;">
+    <form method="GET" style="display: flex; gap: 10px;">
+        <input type="text" name="patente" placeholder="Buscar patente..." value="{{ patente }}">
+        <button class="btn" type="submit">Buscar</button>
+    </form>
+    <a href="/agregar-camion/" class="btn">+ Agregar Unidad</a>
+    <a href="/" class="btn btn-gris">← Menú Principal</a>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+    {% for camion in camiones %}
+    <div style="background: #1e1e1e; border: 1px solid #333; padding: 20px; border-radius: 6px;">
+        <h3 style="color: #e74c3c;">{{ camion.patente }}</h3>
+        <p>Modelo: {{ camion.modelo }}</p>
+        {% if camion.chofer %}
+        <p>Chofer: {{ camion.chofer.nombre }} {{ camion.chofer.apellido }}</p>
+        <p>CUIT: {{ camion.chofer.cuit }}</p>
+        <p>Legajo: {{ camion.chofer.legajo }}</p>
+        {% else %}
+        <p style="color: #888;">Sin chofer asignado</p>
+        {% endif %}
+        <div style="margin-top: 15px; display: flex; gap: 8px;">
+            <a href="/camion/{{ camion.pk }}/" class="btn">Ver más</a>
+            <a href="/editar-camion/{{ camion.pk }}/" class="btn btn-gris">Editar</a>
+        </div>
+    </div>
+    {% empty %}
+    <p>No hay unidades de este tipo.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}
