@@ -29,10 +29,28 @@
     </div>
     {% endif %}
 
+    <div style="background: #1e1e1e; border: 1px solid #333; padding: 20px; border-radius: 6px; grid-column: span 2;">
+        <h2 style="border-bottom: 2px solid #c0392b; padding-bottom: 10px; margin-bottom: 15px;">Historial de Viajes</h2>
+        {% if camion.viajes.all %}
+            {% for viaje in camion.viajes.all %}
+            <div style="border-bottom: 1px solid #333; padding: 10px 0; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <p><strong>{{ viaje.origen }}</strong> → <strong>{{ viaje.destino }}</strong></p>
+                    <p style="color: #aaa; font-size: 13px;">{{ viaje.fecha }} — {{ viaje.estado }}</p>
+                </div>
+                <a href="{% url 'detalle_viaje' viaje.pk %}" class="btn" style="font-size: 13px;">Ver más</a>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p style="color: #aaa;">No hay viajes registrados para este camión.</p>
+        {% endif %}
+    </div>
+
 </div>
 
 <div style="margin-top: 20px; display: flex; gap: 10px;">
-    <a href="/editar-camion/{{ camion.pk }}/" class="btn">Editar</a>
+    <a href="{% url 'editar_camion' camion.pk %}" class="btn">✏️ Editar</a>
+    <a href="{% url 'eliminar_camion' camion.pk %}" class="btn" style="background: #7b0000;">🗑️ Eliminar</a>
     <a href="/tipo/{{ camion.tipo_unidad }}/" class="btn btn-gris">← Volver</a>
 </div>
 

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Detalle del Viaje</h2>
+
+<div style="background: #1a1a1a; padding: 20px; border-radius: 8px; border: 1px solid #c0392b; max-width: 700px;">
+    <p><strong>Camión:</strong> {{ viaje.camion }}</p>
+    <p><strong>Origen:</strong> {{ viaje.origen }}</p>
+    <p><strong>Destino:</strong> {{ viaje.destino }}</p>
+    <p><strong>Fecha:</strong> {{ viaje.fecha }}</p>
+    <p><strong>Estado:</strong> {{ viaje.estado }}</p>
+
+    {% if viaje.descripcion %}
+    <div style="margin-top: 15px;">
+        <strong>Descripción:</strong>
+        <div style="margin-top: 8px;">{{ viaje.descripcion|safe }}</div>
+    </div>
+    {% endif %}
+
+    {% if viaje.imagen %}
+    <div style="margin-top: 15px;">
+        <img src="{{ viaje.imagen.url }}" alt="Imagen del viaje" style="max-width: 100%; border-radius: 6px;">
+    </div>
+    {% endif %}
+
+    <div style="margin-top: 20px; display: flex; gap: 10px;">
+        <a href="{% url 'editar_viaje' viaje.pk %}" class="btn">✏️ Editar</a>
+        <a href="{% url 'eliminar_viaje' viaje.pk %}" class="btn btn-gris">🗑️ Eliminar</a>
+        <a href="{% url 'index' %}" class="btn btn-gris">← Volver</a>
+    </div>
+</div>
+
+{% endblock %}

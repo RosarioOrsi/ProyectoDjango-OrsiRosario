@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div style="max-width: 600px; margin: 40px auto;">
+    <h1 style="margin-bottom: 5px;">✉️ Nuevo Mensaje</h1>
+    <p style="color: #c0392b; margin-bottom: 30px;">Enviá un mensaje a otro usuario</p>
+
+    <form method="POST" style="background: #1e1e1e; padding: 30px; border-radius: 8px; border: 1px solid #333;">
+        {% csrf_token %}
+        {% for field in form %}
+            <label>{{ field.label }}</label>
+            {{ field }}
+            {% for error in field.errors %}
+                <p style="color: #e74c3c; margin: 5px 0;">{{ error }}</p>
+            {% endfor %}
+        {% endfor %}
+        <div style="display: flex; gap: 15px; margin-top: 20px;">
+            <button class="btn" type="submit">Enviar</button>
+            <a href="{% url 'bandeja_entrada' %}" class="btn btn-gris">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

@@ -3,7 +3,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Flota Sur</title>
+    <title>Empresa de Transporte</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background-color: #111; color: #fff; font-family: Arial, sans-serif; }
@@ -25,15 +25,9 @@
 </head>
 <body>
     <nav>
-        <a href="{% url 'home' %}">🚛 Flota Sur</a>
-        <a href="{% url 'about' %}">Quiénes somos</a>
-        {% if request.user.is_authenticated %}
-            <a href="{% url 'index' %}">Dashboard</a>
-            <a href="{% url 'lista_viajes' %}">📄 Pages</a>
-            <a href="/agregar-viaje/">+ Viaje</a>
-            <a href="/agregar-chofer/">+ Chofer</a>
-            <a href="{% url 'bandeja_entrada' %}">📬 Mensajes</a>
-        {% endif %}
+        <a href="/">🚛 Transporte</a>
+        <a href="/agregar-viaje/">+ Viaje</a>
+        <a href="/agregar-chofer/">+ Chofer</a>
 
         <div class="nav-right">
             {% if request.user.is_authenticated %}
@@ -47,8 +41,3 @@
     </nav>
 
     <div class="container">
-        {% block content %}{% endblock %}
-    </div>
-
-</body>
-</html>

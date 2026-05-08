@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 style="margin-bottom: 20px;">🗺️ Viajes</h1>
+
+<div style="margin-bottom: 20px;">
+    <a href="{% url 'agregar_viaje' %}" class="btn">+ Nuevo Viaje</a>
+</div>
+
+{% if viajes %}
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+        {% for viaje in viajes %}
+        <div style="background: #1e1e1e; border: 1px solid #333; padding: 20px; border-radius: 6px;">
+            <h3 style="color: #e74c3c;">{{ viaje.origen }} → {{ viaje.destino }}</h3>
+            <p style="margin-top: 8px;">Fecha: {{ viaje.fecha }}</p>
+            <p>Estado: {{ viaje.estado }}</p>
+            <p>Camión: {{ viaje.camion }}</p>
+            <div style="margin-top: 15px;">
+                <a href="{% url 'detalle_viaje_pages' viaje.pk %}" class="btn">Leer más</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p style="color: #aaa;">No hay páginas aún.</p>
+{% endif %}
+
+{% endblock %}

@@ -1,4 +1,5 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 
@@ -41,6 +42,9 @@ class Viaje(models.Model):
     origen = models.CharField(max_length=100)
     destino = models.CharField(max_length=100)
     estado = models.CharField(max_length=20, choices=ESTADOS)
+    fecha = models.DateField(null=True, blank=True)
+    imagen = models.ImageField(upload_to='viajes/', null=True, blank=True)
+    descripcion = RichTextField(blank=True, null=True)
     camion = models.ForeignKey(Camion, on_delete=models.CASCADE, related_name='viajes')
 
     def __str__(self):

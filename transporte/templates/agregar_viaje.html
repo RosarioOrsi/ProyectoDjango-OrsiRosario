@@ -3,12 +3,35 @@
 
 <h2 style="margin-bottom: 20px;">🗺️ Agregar Viaje</h2>
 
-<form method="POST" style="max-width: 400px;">
+<form method="POST" enctype="multipart/form-data" style="max-width: 600px;">
     {% csrf_token %}
-    {{ form.as_p }}
+    
+    <label>Origen</label>
+    {{ form.origen }}
+    
+    <label>Destino</label>
+    {{ form.destino }}
+    
+    <label>Estado</label>
+    {{ form.estado }}
+    
+    <label>Fecha</label>
+    {{ form.fecha }}
+    
+    <label>Remito (imagen)</label>
+    {{ form.imagen }}
+    
+    <label>Descripción</label>
+    {{ form.descripcion }}
+    
+    <label>Camión</label>
+    {{ form.camion }}
+
     <br>
-    <button class="btn" type="submit">Guardar</button>
-    <a href="/" class="btn" style="margin-left: 10px;">← Volver</a>
+    <button class="btn" type="submit" style="margin-top: 10px;">Guardar</button>
+    <a href="{% url 'index' %}" class="btn btn-gris" style="margin-left: 10px;">← Volver</a>
 </form>
+
+{{ form.media }}
 
 {% endblock %}

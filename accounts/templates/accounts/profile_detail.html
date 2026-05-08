@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div style="max-width: 600px; margin: 40px auto;">
+    <h2 style="margin-bottom: 20px; color: #c0392b;">👤 Mi Perfil</h2>
+
+    {% if not request.user.bio or not request.user.avatar %}
+        <p style="color: #e74c3c; margin-bottom: 20px;">⚠️ Tu perfil está incompleto. <a href="{% url 'perfil_change' %}" style="color: #e74c3c; text-decoration: underline;">Completalo acá</a></p>
+    {% endif %}
+
+    <div style="background: #1e1e1e; padding: 30px; border-radius: 8px; border: 1px solid #333; display: flex; gap: 30px; align-items: center;">
+        
+        {% if request.user.avatar %}
+            <img src="{{ request.user.avatar.url }}" alt="Avatar" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #c0392b;">
+        {% else %}
+            <div style="width: 100px; height: 100px; border-radius: 50%; background: #333; border: 3px solid #c0392b; display: flex; align-items: center; justify-content: center; font-size: 40px;">👤</div>
+        {% endif %}
+
+        <div>
+            <p><strong>Usuario:</strong> {{ request.user.username }}</p>
+            <p><strong>Nombre:</strong> {{ request.user.first_name }} {{ request.user.last_name }}</p>
+            <p><strong>Email:</strong> {{ request.user.email }}</p>
+            <p><strong>Biografía:</strong> {{ request.user.bio|default:"Sin biografía" }}</p>
+            <p><strong>Fecha de nacimiento:</strong> {{ request.user.fecha_de_nacimiento|default:"No especificada" }}</p>
+        </div>
+    </div>
+
+    <div style="margin-top: 20px; display: flex; gap: 10px;">
+        <a href="{% url 'perfil_change' %}" class="btn">✏️ Editar Perfil</a>
+        <a href="{% url 'password_change' %}" class="btn btn-gris">🔒 Cambiar Contraseña</a>
+    </div>
+</div>
+
+{% endblock %}

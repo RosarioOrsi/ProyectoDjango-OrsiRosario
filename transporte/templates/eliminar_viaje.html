@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div style="max-width: 500px; margin: 60px auto; text-align: center;">
+    <h1 style="margin-bottom: 10px;">⚠️ Eliminar Viaje</h1>
+    <p style="color: #aaa; margin-bottom: 30px;">¿Estás segura de que querés eliminar este viaje?</p>
+
+    <div style="background: #1e1e1e; border-left: 4px solid #c0392b; padding: 20px; border-radius: 8px; margin-bottom: 30px; text-align: left;">
+        <p><strong>Origen:</strong> {{ viaje.origen }}</p>
+        <p style="margin-top: 8px;"><strong>Destino:</strong> {{ viaje.destino }}</p>
+        <p style="margin-top: 8px;"><strong>Estado:</strong> {{ viaje.estado }}</p>
+    </div>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button class="btn" type="submit" style="background: #c0392b;">Sí, eliminar</button>
+        <a href="{% url 'index' %}" class="btn btn-gris" style="margin-left: 15px;">Cancelar</a>
+    </form>
+</div>
+
+{% endblock %}

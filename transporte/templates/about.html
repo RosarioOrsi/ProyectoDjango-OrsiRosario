@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div style="max-width: 800px; margin: 60px auto;">
+    <h1 style="margin-bottom: 10px;">🚛 Quiénes somos</h1>
+    <p style="color: #c0392b; font-size: 18px; margin-bottom: 40px;">Conocé a Flota Sur</p>
+
+    <div style="background: #1e1e1e; border-left: 4px solid #c0392b; padding: 30px; border-radius: 8px; margin-bottom: 30px;">
+        <h2 style="margin-bottom: 15px;">Nuestra empresa</h2>
+        <p style="line-height: 1.8;">Flota Sur es una empresa argentina de transporte de cargas fundada con el objetivo de brindar un servicio confiable, eficiente y profesional. Contamos con una flota propia de camiones de distintos tipos, adaptada a las necesidades de cada cliente y cada tipo de carga.</p>
+    </div>
+
+    <div style="background: #1e1e1e; border-left: 4px solid #c0392b; padding: 30px; border-radius: 8px; margin-bottom: 30px;">
+        <h2 style="margin-bottom: 15px;">Nuestra misión</h2>
+        <p style="line-height: 1.8;">Conectar el país a través del transporte terrestre, garantizando puntualidad, seguridad y trato personalizado en cada viaje. Trabajamos con choferes profesionales y unidades en perfecto estado de mantenimiento.</p>
+    </div>
+
+    <div style="background: #1e1e1e; border-left: 4px solid #c0392b; padding: 30px; border-radius: 8px; margin-bottom: 40px;">
+        <h2 style="margin-bottom: 15px;">Nuestra flota</h2>
+        <p style="line-height: 1.8;">Operamos con tres tipos de unidades: <strong style="color:#fff;">Chasis</strong>, <strong style="color:#fff;">Semirremolques</strong> y <strong style="color:#fff;">Bitrenes</strong>, cubriendo rutas en todo el territorio nacional.</p>
+    </div>
+
+    <div style="text-align: center;">
+        <a href="{% url 'login' %}" class="btn" style="font-size: 16px; padding: 12px 35px;">Iniciar Sesión</a>
+        <a href="{% url 'home' %}" class="btn btn-gris" style="font-size: 16px; padding: 12px 35px; margin-left: 15px;">Volver al inicio</a>
+    </div>
+</div>
+
+{% endblock %}

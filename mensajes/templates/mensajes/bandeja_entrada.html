@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div style="max-width: 800px; margin: 40px auto;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h1>📬 Bandeja de Entrada</h1>
+        <div style="display: flex; gap: 10px;">
+            <a href="{% url 'enviar_mensaje' %}" class="btn">✉️ Nuevo Mensaje</a>
+            <a href="{% url 'mensajes_enviados' %}" class="btn btn-gris">📤 Enviados</a>
+        </div>
+    </div>
+
+    {% if mensajes %}
+        {% for mensaje in mensajes %}
+        <div style="background: {% if not mensaje.leido %}#2a1a1a{% else %}#1e1e1e{% endif %}; border-left: 4px solid {% if not mensaje.leido %}#c0392b{% else %}#444{% endif %}; padding: 15px 20px; border-radius: 6px; margin-bottom: 10px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    {% if not mensaje.leido %}<span style="color: #c0392b; font-weight: bold;">● </span>{% endif %}
+                    <strong>{{ mensaje.asunto }}</strong>
+                    <span style="color: #888; margin-left: 10px;">De: {{ mensaje.remitente.username }}</span>
+                </div>
+                <span style="color: #888; font-size: 13px;">{{ mensaje.fecha|date:"d/m/Y H:i" }}</span>
+            </div>
+            <div style="margin-top: 10px; display: flex; gap: 8px;">
+                <a href="{% url 'detalle_mensaje' mensaje.pk %}" class="btn">Ver</a>
+                <a href="{% url 'eliminar_mensaje' mensaje.pk %}" class="btn" style="background: #7b0000;">🗑️</a>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p style="color: #aaa;">No tenés mensajes en tu bandeja de entrada.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

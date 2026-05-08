@@ -8,8 +8,8 @@
         <input type="text" name="patente" placeholder="Buscar patente..." value="{{ patente }}">
         <button class="btn" type="submit">Buscar</button>
     </form>
-    <a href="/agregar-camion/" class="btn">+ Agregar Unidad</a>
-    <a href="/" class="btn btn-gris">← Menú Principal</a>
+    <a href="{% url 'agregar_camion' %}" class="btn">+ Agregar Unidad</a>
+    <a href="{% url 'index' %}" class="btn btn-gris">← Menú Principal</a>
 </div>
 
 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
@@ -25,12 +25,13 @@
         <p style="color: #888;">Sin chofer asignado</p>
         {% endif %}
         <div style="margin-top: 15px; display: flex; gap: 8px;">
-            <a href="/camion/{{ camion.pk }}/" class="btn">Ver más</a>
-            <a href="/editar-camion/{{ camion.pk }}/" class="btn btn-gris">Editar</a>
+            <a href="{% url 'detalle_camion' camion.pk %}" class="btn">Ver más</a>
+            <a href="{% url 'editar_camion' camion.pk %}" class="btn btn-gris">✏️ Editar</a>
+            <a href="{% url 'eliminar_camion' camion.pk %}" class="btn" style="background: #7b0000;">🗑️</a>
         </div>
     </div>
     {% empty %}
-    <p>No hay unidades de este tipo.</p>
+    <p style="color: #aaa;">No hay unidades de este tipo registradas.</p>
     {% endfor %}
 </div>
 

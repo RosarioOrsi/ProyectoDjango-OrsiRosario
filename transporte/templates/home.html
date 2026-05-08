@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div style="text-align: center; padding: 80px 20px;">
+    <h1 style="font-size: 48px; margin-bottom: 10px;">🚛 Flota Sur</h1>
+    <p style="font-size: 20px; color: #aaa; margin-bottom: 40px;">Gestión profesional de transporte de cargas en Argentina</p>
+    
+    <div style="display: flex; justify-content: center; gap: 40px; margin-bottom: 60px;">
+        <div style="background: #1e1e1e; border-left: 4px solid #c0392b; padding: 20px 30px; border-radius: 8px; text-align: left; max-width: 250px;">
+            <h3>🗺️ Cobertura nacional</h3>
+            <p style="margin-top: 8px;">Operamos en todo el territorio argentino con flota propia.</p>
+        </div>
+        <div style="background: #1e1e1e; border-left: 4px solid #c0392b; padding: 20px 30px; border-radius: 8px; text-align: left; max-width: 250px;">
+            <h3>🚚 Flota variada</h3>
+            <p style="margin-top: 8px;">Chasis, Semirremolques y Bitrenes para cada tipo de carga.</p>
+        </div>
+        <div style="background: #1e1e1e; border-left: 4px solid #c0392b; padding: 20px 30px; border-radius: 8px; text-align: left; max-width: 250px;">
+            <h3>📋 Control total</h3>
+            <p style="margin-top: 8px;">Seguimiento de viajes, choferes y unidades en tiempo real.</p>
+        </div>
+    </div>
+
+    <a href="{% url 'login' %}" class="btn" style="font-size: 18px; padding: 15px 40px;">Iniciar Sesión</a>
+    <a href="{% url 'about' %}" class="btn btn-gris" style="font-size: 18px; padding: 15px 40px; margin-left: 15px;">Quiénes somos</a>
+</div>
+
+{% endblock %}

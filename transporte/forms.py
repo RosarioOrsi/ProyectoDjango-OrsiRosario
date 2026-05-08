@@ -1,4 +1,5 @@
 from django import forms
+from ckeditor.widgets import CKEditorWidget
 from .models import Camion, Viaje, Chofer
 
 #Formulario para dar de alta o modificar la informacion de una unidad
@@ -9,9 +10,10 @@ class CamionForm(forms.ModelForm):
 
 #Formulario para dar de alta o modificar la informacion de un viaje
 class ViajeForm(forms.ModelForm):
+    descripcion = forms.CharField(widget=CKEditorWidget(), required=False)
     class Meta:
         model = Viaje
-        fields = ['origen', 'destino', 'estado', 'camion']
+        fields = ['origen', 'destino', 'estado', 'fecha', 'imagen', 'descripcion', 'camion']
 
 #Formulario para dar de alta o modificar la informacion de un chofer
 class ChoferForm(forms.ModelForm):
